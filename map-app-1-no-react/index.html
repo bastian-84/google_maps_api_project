@@ -31,6 +31,13 @@
             // new map
             var map = new google.maps.Map(document.getElementById('map'), options); 
 
+            // create marker by click (Kapitel 05)
+            // Add eventListener
+            google.maps.event.addListener(map, 'click', (paramEvent) => {
+                addMarker( { paramCoords: paramEvent.latLng } );
+            })
+
+
         /*  // add marker
             var marker = new google.maps.Marker(
                 {
@@ -82,7 +89,39 @@
                     })
                 }
             }
-            addMarker({
+
+            // Array Umbau
+            var arrMarkers = [
+                {
+                    paramCoords: {
+                        lat: 52.5210,
+                        lng: 13.4060
+                    },
+                    iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                    content: '<h1>Berlin</h1>'
+                },
+                {
+                    paramCoords: {
+                        lat: 52.5110,
+                        lng: 13.4160
+                    },
+                    content: '<h1>Berlin 2</h1>'
+                },
+                {
+                    paramCoords: {
+                        lat: 52.5240,
+                        lng: 13.4090
+                    },
+                    content: '<h1>Berlin 3</h1>'
+                }
+            ];
+
+            // Arr call loop
+            for(var i = 0; i < arrMarkers.length; i++){
+                addMarker(arrMarkers[i]);
+            } 
+
+           /*  addMarker({
                 paramCoords: {
                     lat: 52.5210,
                     lng: 13.4060
@@ -106,7 +145,7 @@
                 content: '<h1>Berlin 3</h1>'
             }
             addMarker(position3);
-         
+          */
 
           
            
